@@ -14,7 +14,9 @@ const App = () => {
   const [translatedText, setTranslatedText] = useState("");
 
   const getLanguages = async () => {
-    const response = await axios.get("http://localhost:8000/languages");
+    const response = await axios.get(
+      "https://google-transalte-api.vercel.app/languages"
+    );
     console.log(response.data);
     setLanguages(response.data);
   };
@@ -23,17 +25,15 @@ const App = () => {
   }, []);
 
   const translate = async () => {
-    console.log("trainsalte");
     const data = {
       textToTranslate,
       outputLanguage,
       inputLanguage,
     };
     const response = await axios.post(
-      "http://localhost:8000/translation",
+      "https://google-transalte-api.vercel.app/translation",
       data
     );
-    console.log("response", response);
     setTranslatedText(response.data);
   };
 

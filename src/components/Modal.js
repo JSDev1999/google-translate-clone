@@ -40,25 +40,26 @@ const Modal = ({
       </div>
       <div className="option-container">
         <ul>
-          {filteredLanguages?.map((filteredLanguage, _index) => (
-            <div className="list-item">
-              <div className="icon">
-                {chosenLanguage === filteredLanguage?.id ? "✓" : ""}
+          {languages?.length > 0 &&
+            filteredLanguages?.map((filteredLanguage, _index) => (
+              <div className="list-item">
+                <div className="icon">
+                  {chosenLanguage === filteredLanguage?.id ? "✓" : ""}
+                </div>
+                <li
+                  key={_index}
+                  onClick={() => handleClick(filteredLanguage)}
+                  style={{
+                    color:
+                      chosenLanguage === filteredLanguage?.name
+                        ? "#8ab4f8"
+                        : null,
+                  }}
+                >
+                  {filteredLanguage?.name}
+                </li>
               </div>
-              <li
-                key={_index}
-                onClick={() => handleClick(filteredLanguage)}
-                style={{
-                  color:
-                    chosenLanguage === filteredLanguage?.name
-                      ? "#8ab4f8"
-                      : null,
-                }}
-              >
-                {filteredLanguage?.name}
-              </li>
-            </div>
-          ))}
+            ))}
         </ul>
       </div>
     </div>
